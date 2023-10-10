@@ -14,11 +14,18 @@ For those who are new to git/github
 `git checkout -b newbranchname` creates a new branch from your current branch
 If you have committed code, but upon finishing your feature, the main branch has progressed, you are encouraged to rebase it to ensure it still works.
 
-To rebase your branch you will need to run the command
+To rebase your branch you will need to run the command:
 
 ```
-
 git rebase --onto <newparent> <oldparent>
 git push -f
 
 ```
+
+After finishing your feature, you can delete the old branch:
+
+- Locally:
+  > 1.  Use `git checkout master` to move off the branch that you want to delete.
+  > 2.  Delete the branch locally with `git branch -d <branch>`
+  > 3.  Delete the branch remotely with ` git push <remote> --delete <branch>`
+  > 4.  (optional) synchronize the branch list by using `git fetch -p`
