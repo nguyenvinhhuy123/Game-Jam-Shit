@@ -24,8 +24,7 @@ git push -f
 
 After finishing your feature, you can delete the old branch:
 
-- Locally:
-  > 1.  Use `git checkout master` to move off the branch that you want to delete.
-  > 2.  Delete the branch locally with `git branch -d <branch>`
-  > 3.  Delete the branch remotely with ` git push <remote> --delete <branch>`
-  > 4.  (optional) synchronize the branch list by using `git fetch -p`
+1.  Use `git checkout master` to move off the branch that you want to delete.
+2.  Delete the branch locally with `git branch -d <branch>`
+3.  Delete the branch remotely with ` git push <remote> --delete <branch>`
+4.  (optional) synchronize the branch list by using `git fetch -p`
