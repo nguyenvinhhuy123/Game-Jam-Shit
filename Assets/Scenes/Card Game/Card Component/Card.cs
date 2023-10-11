@@ -2,24 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum CardType
-{
-    Monster,
-    Spell,
-    Trap,
-
-}
 public class Card : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private string m_cardName;
+    public string CardName {get {return m_cardName;} set {m_cardName = value;}}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #region Sprite
+    [SerializeField] private Sprite m_frontSprite;
+    public Sprite FrontSprite {get {return m_frontSprite;} set {m_frontSprite = value;}}
+
+    [SerializeField] private Sprite m_backSprite;
+    public Sprite BackSprite {get {return m_backSprite;} set {m_backSprite = value;}}
+    
+    #endregion
 }
