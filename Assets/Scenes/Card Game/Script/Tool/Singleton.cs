@@ -2,14 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class Singleton : MonoBehaviour
 {
-    [SerializeField] private GameObject m_playerHand;
-    [SerializeField] private GameObject m_enemyHand;
-    [SerializeField] private GameObject m_Environment;
-
-    //TODO: 
-
     // Start is called before the first frame update
     void Start()
     {
