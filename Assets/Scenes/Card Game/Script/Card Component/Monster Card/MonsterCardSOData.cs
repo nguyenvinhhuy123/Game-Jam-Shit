@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Spine.Unity;
 using UnityEngine;
 
 public enum MonsterType
@@ -16,8 +17,11 @@ public enum MonsterType
 public class MonsterCardSOData : CardSOData
 {
     public int Health;
-    public int Attack;
     public MonsterType Type;
     public int NormalAttackDamage;
     public int SkillDamage;
+    public SkeletonDataAsset SkeletonAsset;
+
+    //! Cannot serialize var??
+    
 }

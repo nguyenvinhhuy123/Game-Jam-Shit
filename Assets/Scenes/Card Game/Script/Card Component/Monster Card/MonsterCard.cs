@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Spine.Unity;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Health),typeof(Attack))]
 public class MonsterCard : Card
 {
-    [SerializeField] private MonsterCardSOData m_data;
+    #region Data
     public CardComponentWrapper m_component;
-    [SerializeField] private int m_attack;
-    public int Attack {get {return m_attack;} set {m_attack = value;}}
+    [SerializeField] private MonsterCardSOData m_data;
+    [SerializeField] private SkeletonDataAsset m_animationAsset;
+    public SkeletonDataAsset AnimationAsset {get {return m_animationAsset;} set {m_animationAsset = value;}}
+    #endregion
+
+    #region Atttribute
+    
     [SerializeField] private int m_health;
     public int Health {get {return m_health;} set {m_health = value;}}
     [SerializeField] private MonsterType m_type;
@@ -20,51 +25,52 @@ public class MonsterCard : Card
     [SerializeField] private MonsterSkill m_skill;
     public MonsterSkill Skill {get {return m_skill;} set {m_skill = value;}}
     [SerializeField] private int m_normalAttackDamage;
-    public int NormalAttackDamage {get {return m_normalAttackDamage;} set {m_normalAttackDamage = value;}}
-    [SerializeField] private int m_skillDamage;
-    public int SkillDamage {get {return m_skillDamage;} set {m_skillDamage = value;}}
 
 
-    //! Should we use a formula here??
-    //* Something like NADamage = attack*multiplier + debuff */
-    //*SkillDmg = Attack * Skill multiplier + debuff */
-    //!Or Use a complete different scale??
+    //? Should we use a formula here , Or Use a complete different scale??
+    //!Option 1:
+    //*NADamage = attack*multiplier + debuff */
+    //*SkillDmg = attack*Skill multiplier + debuff */
+    //!Option 2:
     //*NADamage = NABaseDamage + debuff */
     //*SkillDmg = SkillBaseDmg + debuff */
 
     //Plus 2 Attack for card
     //Plus 2 NA dmg
     //* */
+
+
+    public int NormalAttackDamage {get {return m_normalAttackDamage;} set {m_normalAttackDamage = value;}}
+    [SerializeField] private int m_skillDamage;
+    public int SkillDamage {get {return m_skillDamage;} set {m_skillDamage = value;}}
+    
+    #endregion
     void InitData()
     {
-        #region set up parameter
+        #region set up attribute
             m_type = m_data.Type;
-            m_attack = m_data.Attack;
             m_health = m_data.Health;
             m_normalAttackDamage = m_data.NormalAttackDamage;
             m_skillDamage = m_data.SkillDamage;
             FrontSprite = m_data.FrontSprite;
             BackSprite = m_data.BackSprite;
             CardName = m_data.Name; 
+            m_animationAsset = m_data.SkeletonAsset;
         #endregion
-
-
-        #region set up sprite ui
-            //! Suject to change:
-            Debug.Log(m_component.m_spriteRenderer);
-            //*This is now just basic sprite set up*/
-            //m_component.m_spriteRenderer.sprite = FrontSprite;
-        #endregion
-        
+    }
+    void OnEnable()
+    {
+        m_component = new CardComponentWrapper();
+        m_component.InitComponent(this.gameObject);
     }
     void Awake()
     {
         m_component = new CardComponentWrapper();
         m_component.InitComponent(this.gameObject);
-        InitData();
     }
     void Start()
     {
+        m_component.m_axieAnimation.skeletonDataAsset = m_data.SkeletonAsset;
         InitData();
     }
     void OnValidate()

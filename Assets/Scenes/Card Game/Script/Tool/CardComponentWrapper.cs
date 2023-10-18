@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game;
+using Spine.Unity;
 using UnityEngine;
 
 public class CardComponentWrapper
@@ -9,7 +10,7 @@ public class CardComponentWrapper
     public Collider2D m_collider2D;
     public Health m_health;
     public Attack m_attack;
-    public AxieFigure m_axie;
+    public SkeletonAnimation m_axieAnimation;
 
     //TODO: Add component here
     public void InitComponent(GameObject GO)
@@ -18,6 +19,6 @@ public class CardComponentWrapper
         m_collider2D = GO.GetComponent<Collider2D>();
         m_health = GO.GetComponent<Health>();
         m_attack = GO.GetComponent<Attack>();
-        m_axie = GO.GetComponentInChildren<AxieFigure>();
+        m_axieAnimation = GO.GetComponentInChildren<SkeletonAnimation>();
     }
 }
