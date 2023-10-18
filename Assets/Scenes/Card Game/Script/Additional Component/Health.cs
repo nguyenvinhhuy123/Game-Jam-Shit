@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
@@ -7,7 +8,7 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int m_initHealthValue;
-    public int HealthValue {get {return m_initHealthValue;} set {m_initHealthValue = value;}}
+    public int InitHealthValue {get {return m_initHealthValue;} set {m_initHealthValue = value;}}
     [SerializeField] private int m_currentHealth;
     public int CurrentHealthValue {get {return m_currentHealth;} set{m_currentHealth -= value;}}
     [SerializeField] private int m_shieldValue;
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour
     public int ShieldDuration {get {return m_shieldDuration;} set {m_shieldDuration = value;}}
     [SerializeField] private bool m_unitInactive;
     public bool UnitInactive {get {return m_unitInactive;}}
+    
     public UnityEvent OnKillSelfEvent;
     void Awake()
     {
@@ -23,7 +25,6 @@ public class Health : MonoBehaviour
     }
     void Start()
     {
-        InitHealth();
     }
     public void DamageSelf(int damage)
     {
@@ -55,6 +56,10 @@ public class Health : MonoBehaviour
             KillSelf();
         }
     }
+    public void ApplyDOTSelf(int DOTDamage, int Duration)
+    {
+
+    }
     private void KillSelf()
     {
         //TODO: disable card until round end
@@ -83,8 +88,9 @@ public class Health : MonoBehaviour
             m_shieldValue = 0;
         }
     }
-    private void InitHealth()
+    public void InitHealth(int health)
     {
+        m_initHealthValue = health;
         m_currentHealth = m_initHealthValue;
     }
     public void AddListener(UnityAction action)

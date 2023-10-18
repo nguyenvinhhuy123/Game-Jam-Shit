@@ -73,6 +73,7 @@ public class MonsterCard : Card
         m_component.m_axieAnimation.skeletonDataAsset = m_data.SkeletonAsset;
         m_component.m_axieAnimation.AnimationState.SetAnimation(0,  "action/idle/normal", true);
         InitData();
+        m_component.m_health.InitHealth(m_health);
     }
     void OnValidate()
     {
@@ -93,5 +94,9 @@ public class MonsterCard : Card
             Debug.Log(m_component.m_axieAnimation);
             m_component.m_axieAnimation.skeletonDataAsset = m_data.SkeletonAsset;
         }
+    }
+    public void OnNormalAttackUse(MonsterCard target)
+    {
+        m_normalAttack.OnUse(target, this as MonsterCard);
     }
 }

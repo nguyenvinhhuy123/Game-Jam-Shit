@@ -20,6 +20,10 @@ public abstract class Card : MonoBehaviour
 
     public virtual void OnHover()
     {
+        
+    }
+    public virtual void OnSelect()
+    {
 
     }
 }

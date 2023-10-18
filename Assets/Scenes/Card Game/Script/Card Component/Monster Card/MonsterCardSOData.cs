@@ -22,6 +22,5 @@ public class MonsterCardSOData : CardSOData
     public int SkillDamage;
     public SkeletonDataAsset SkeletonAsset;
 
-    //! Cannot serialize var??
     
 }
