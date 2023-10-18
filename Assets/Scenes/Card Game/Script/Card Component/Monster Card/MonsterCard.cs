@@ -95,8 +95,14 @@ public class MonsterCard : Card
             m_component.m_axieAnimation.skeletonDataAsset = m_data.SkeletonAsset;
         }
     }
-    public void OnNormalAttackUse(MonsterCard target)
+    public void UseNormalAttack(MonsterCard target)
     {
-        m_normalAttack.OnUse(target, this as MonsterCard);
+        //TODO: Add constrain when target card = our card
+        m_normalAttack?.OnUse(target, this as MonsterCard);
+    }
+    public void UseSpell(MonsterCard target)
+    {
+        //TODO: Add constrain when target card = our card
+        m_skill?.OnUse(target, this as MonsterCard);
     }
 }

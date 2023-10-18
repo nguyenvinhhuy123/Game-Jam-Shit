@@ -52,7 +52,6 @@ public class TurnManager : Singleton<TurnManager>
         OnEndOfTurn.Invoke(m_authority);
     }
     /// <summary>
-    /// GameManager will roll 2 dice, player with higher roll move first
     /// Request register first player to move 
     /// </summary>
     /// <param name="diceRollWinner"></param> <summary>
