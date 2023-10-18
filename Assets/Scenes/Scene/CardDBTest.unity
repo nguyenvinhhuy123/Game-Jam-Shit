@@ -305,12 +305,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cardName: Test Monster
-  m_frontSprite: {fileID: 21300000, guid: 81cefa2b805fd4f49ae4de35fe4e869e, type: 3}
+  m_frontSprite: {fileID: 0}
   m_backSprite: {fileID: 21300000, guid: b6a96c7c65795c94abf54a62adbf5c38, type: 3}
   m_data: {fileID: 11400000, guid: 79b33379c6a329a4ebceefd9aa4ec00f, type: 2}
-  m_animationAsset: {fileID: 0}
+  m_animationAsset: {fileID: 11400000, guid: e68be858534ea4f7c97a9d7578637771, type: 2}
   m_health: 10
-  m_type: 0
+  m_type: 2
   m_normalAttack: {fileID: 11400000, guid: 50b1b0f0b7e1b42489edc172c7d1efe1, type: 2}
   m_skill: {fileID: 11400000, guid: 8b28230a072ec9d45a011347f5ec4302, type: 2}
   m_normalAttackDamage: 2
@@ -455,17 +455,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8210591601586198820, guid: 4406db98bd9b8244bab4cf8ce5571957, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210591601586198820, guid: 4406db98bd9b8244bab4cf8ce5571957, type: 3}
       propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 056295ff8c2fc45cb9f092c2d97dd77c, type: 2}
+    - target: {fileID: 8210591601586198820, guid: 4406db98bd9b8244bab4cf8ce5571957, type: 3}
+      propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 862a3ce85ecaf4c51904dc2dd6e07a74, type: 2}
     - target: {fileID: 8671340051176947455, guid: 4406db98bd9b8244bab4cf8ce5571957, type: 3}
-      propertyPath: _animationName
-      value: 
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8671340051176947455, guid: 4406db98bd9b8244bab4cf8ce5571957, type: 3}
       propertyPath: skeletonDataAsset
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: cdcacac536c5d4634b1b35077055b084, type: 2}
     - target: {fileID: 8686321567432527831, guid: 4406db98bd9b8244bab4cf8ce5571957, type: 3}
       propertyPath: m_Mesh
       value: 

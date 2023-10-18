@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using System.Data.Common;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 [RequireComponent(typeof(Health),typeof(Attack))]
 public class MonsterCard : Card
 {
     #region Data
-    public CardComponentWrapper m_component;
+    public CardComponentWrapper m_component = new CardComponentWrapper();
+    [Header("Data Asset")]
     [SerializeField] private MonsterCardSOData m_data;
     [SerializeField] private SkeletonDataAsset m_animationAsset;
     public SkeletonDataAsset AnimationAsset {get {return m_animationAsset;} set {m_animationAsset = value;}}
@@ -60,21 +62,36 @@ public class MonsterCard : Card
     }
     void OnEnable()
     {
-        m_component = new CardComponentWrapper();
         m_component.InitComponent(this.gameObject);
     }
     void Awake()
     {
-        m_component = new CardComponentWrapper();
         m_component.InitComponent(this.gameObject);
     }
     void Start()
     {
         m_component.m_axieAnimation.skeletonDataAsset = m_data.SkeletonAsset;
+        m_component.m_axieAnimation.AnimationState.SetAnimation(0,  "action/idle/normal", true);
         InitData();
     }
     void OnValidate()
     {
-        InitData();
+        if (m_component.m_axieAnimation == null)
+        {
+            m_component.InitComponent(this.gameObject);
+        }
+        if (m_data !=  null)
+        {
+            m_data.Type = m_type;
+            m_data.Health = m_health;
+            m_data.NormalAttackDamage = m_normalAttackDamage;
+            m_data.SkillDamage = m_skillDamage;
+            m_data.FrontSprite = FrontSprite;
+            m_data.BackSprite = BackSprite;
+            m_data.Name = CardName; 
+            m_data.SkeletonAsset = m_animationAsset;
+            Debug.Log(m_component.m_axieAnimation);
+            m_component.m_axieAnimation.skeletonDataAsset = m_data.SkeletonAsset;
+        }
     }
 }

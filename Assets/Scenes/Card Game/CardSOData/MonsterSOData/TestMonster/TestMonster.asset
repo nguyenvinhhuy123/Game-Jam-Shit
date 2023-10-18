@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: TestMonster
   m_EditorClassIdentifier: 
   Name: Test Monster
-  FrontSprite: {fileID: 21300000, guid: 81cefa2b805fd4f49ae4de35fe4e869e, type: 3}
+  FrontSprite: {fileID: 0}
   BackSprite: {fileID: 21300000, guid: b6a96c7c65795c94abf54a62adbf5c38, type: 3}
   Health: 10
   Type: 0
   NormalAttackDamage: 2
   SkillDamage: 5
-  SkeletonAsset: {fileID: 11400000, guid: 17b8d394a4a3048c6b388872700353a8, type: 2}
+  SkeletonAsset: {fileID: 11400000, guid: aae79832a3f22487ab29ca5bad687273, type: 2}

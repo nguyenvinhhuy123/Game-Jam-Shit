@@ -13,6 +13,7 @@ public class CardComponentWrapper
     public SkeletonAnimation m_axieAnimation;
 
     //TODO: Add component here
+
     public void InitComponent(GameObject GO)
     {
         m_spriteRenderer = GO.GetComponent<SpriteRenderer>();
