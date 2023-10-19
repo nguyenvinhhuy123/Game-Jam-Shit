@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bdca22f51f1e94b4bbf4415f33b5f24e, type: 3}
-  m_Name: TestMonster
+  m_Name: TestMonster2
   m_EditorClassIdentifier: 
-  Name: Test Monster 001
+  Name: Test Monster 002
   FrontSprite: {fileID: 0}
-  BackSprite: {fileID: 21300000, guid: b6a96c7c65795c94abf54a62adbf5c38, type: 3}
-  Health: 10
-  Type: 2
+  BackSprite: {fileID: 0}
+  Health: 0
+  Type: 0
   NormalAttackDamage: 2
-  SkillDamage: 5
-  SkeletonAsset: {fileID: 11400000, guid: 2452835e0b8254737b358ef2238d1a10, type: 2}
+  SkillDamage: 4
+  SkeletonAsset: {fileID: 11400000, guid: 17b8d394a4a3048c6b388872700353a8, type: 2}

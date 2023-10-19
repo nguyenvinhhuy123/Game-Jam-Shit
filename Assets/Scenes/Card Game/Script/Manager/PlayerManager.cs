@@ -7,9 +7,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject m_playerHand;
     [SerializeField] private GameObject m_enemyHand;
     [SerializeField] private GameObject m_Environment;
+    [SerializeField] private PlayerAuthority m_thisAuthority;
 
     //TODO: 
-
+    void OnTurnChange()
+    {
+        
+    }
     // Start is called before the first frame update
     void Start()
     {

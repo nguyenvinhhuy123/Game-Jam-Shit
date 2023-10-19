@@ -15,6 +15,6 @@ public class MonsterNormalAttack : MonsterSkill
     }
     public override void OnUse(MonsterCard target, MonsterCard user)
     {
-        target.m_component.m_health.DamageSelf(user.NormalAttackDamage);
+        user.m_component.m_attack.PerformAttack(target, user.NormalAttackDamage);
     }
 }
