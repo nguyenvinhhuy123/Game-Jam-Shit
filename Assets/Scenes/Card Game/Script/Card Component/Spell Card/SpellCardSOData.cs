@@ -6,12 +6,6 @@ using UnityEngine;
 public abstract class SpellCardSOData : ScriptableObject
 {
     public int SpellCost;
-    public virtual void Spell(MonsterCard target)
-    {
-
-    }
-    public virtual void Spell()
-    {
-
-    }
+    public virtual void Spell(MonsterCard target, GameObject caster){}
+    public virtual void Spell(GameObject caster){}
 }

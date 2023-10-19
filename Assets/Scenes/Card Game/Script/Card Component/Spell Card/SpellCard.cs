@@ -10,10 +10,10 @@ public class SpellCard : Card
     
     public void UseSelf(MonsterCard target)
     {
-        m_data.Spell(target);
+        m_data.Spell(target, this.gameObject);
     }
     public void UseSelf()
     {
-        m_data.Spell();
+        m_data.Spell(this.gameObject);
     }
 }
