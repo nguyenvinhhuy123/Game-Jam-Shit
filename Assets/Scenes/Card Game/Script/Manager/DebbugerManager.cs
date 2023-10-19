@@ -8,8 +8,13 @@ public class DebbugerManager : MonoBehaviour
     // Start is called before the first frame update
     public MonsterCard Monster1;
     public MonsterCard Monster2;
+    public SpellCard Spell1;
 
     // Update is called once per frame
+    void Start()
+    {
+        TurnManager.Instance.RequestFirstToMove(PlayerAuthority.PLAYER_1);
+    }
     void Update()
     {
         //!for testing with health and attack communication
@@ -19,10 +24,25 @@ public class DebbugerManager : MonoBehaviour
             Monster1.UseNormalAttack(Monster2);
             Assert.AreNotEqual(Monster2.m_component.m_health.CurrentHealthValue, healthMonster2Before);
         }
+
+        //!for testing with buff system
         if (Input.GetKeyDown(KeyCode.B))
         {
-            
+            int NADamageBefore = Monster1.NormalAttackDamage;
+            Spell1.UseSelf(Monster1);
+            Assert.AreNotEqual(NADamageBefore, Monster1.NormalAttackDamage);
         }
-        
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Spell1.RequestEndCardEffect();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            TurnManager.Instance.RequestEndOfTurn(PlayerAuthority.PLAYER_1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            TurnManager.Instance.RequestEndOfTurn(PlayerAuthority.PLAYER_2);
+        }
     }
 }
