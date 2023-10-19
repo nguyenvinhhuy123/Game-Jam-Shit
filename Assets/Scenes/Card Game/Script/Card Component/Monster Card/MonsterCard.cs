@@ -51,7 +51,8 @@ public class MonsterCard : Card
     #endregion
     
     #region Buff System
-    [SerializeField] private readonly Dictionary<BuffSOData, BuffHandler> m_buffDic = new Dictionary<BuffSOData, BuffHandler>();
+    private Dictionary<BuffSOData, BuffHandler> m_buffDic = new Dictionary<BuffSOData, BuffHandler>();
+
     #endregion
     private PlayerAuthority currentAuthority;
     private UnityAction<PlayerAuthority> OnTurnChangeAction;

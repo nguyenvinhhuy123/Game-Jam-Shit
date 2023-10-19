@@ -16,4 +16,26 @@ public class SpellCard : Card
     {
         m_data.Spell(this.gameObject);
     }
+    public void RequestEndCardEffect()
+    {
+        m_data.RequestEndCardEffect(this as SpellCard);
+    }
+    void Awake()
+    {
+        InitData();
+    }
+    void OnValidate()
+    {
+        m_data.SpellCost = m_spellCost;
+        m_data.FrontSprite = FrontSprite;
+        m_data.BackSprite = BackSprite;
+        m_data.Name = CardName; 
+    }
+    void InitData()
+    {
+        m_data.SpellCost = m_spellCost;
+        m_data.FrontSprite = FrontSprite;
+        m_data.BackSprite = BackSprite;
+        m_data.Name = CardName; 
+    }
 }

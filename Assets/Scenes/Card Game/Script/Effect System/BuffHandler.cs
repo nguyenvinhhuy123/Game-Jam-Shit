@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BuffSystem
 {
-    public abstract class BuffHandler : MonoBehaviour
+    public abstract class BuffHandler
     {
         protected int Duration;
         protected int EffectStack;
@@ -22,7 +22,8 @@ namespace BuffSystem
         public void OnTurnChange()
         {
             if (Data.EndConditionType != LifeTimeType.END_ON_TIME) return;
-            Duration --;
+            Debug.Log(Duration);
+            Duration--;
             if (Duration <=0)
             {
                 OnEffectEnd();
@@ -32,17 +33,23 @@ namespace BuffSystem
         {
             if (Data.Stacking == StackConditionType.EFFECT_STACKING)
             {
+                if (Duration <= 0) Duration += Data.Duration;
                 ApplyEffect();
                 EffectStack++;
+                return;
             }
             if (Data.Stacking == StackConditionType.DURATION_STACKING)
             {
+                if (Duration <=0) ApplyEffect();
                 Duration += Data.Duration;
+                return;
             }
             if (Data.Stacking == StackConditionType.OVERRIDE)
             {
+                if (Duration <=0) ApplyEffect();
                 EffectStack = 1;
                 Duration = Data.Duration;
+                return;
             }
         }
         public void RequestEndOfEffect(GameObject caller)

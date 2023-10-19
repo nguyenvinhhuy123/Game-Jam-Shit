@@ -18,7 +18,7 @@ namespace BuffSystem
         public override void OnEffectEnd()
         {
             IsFinished = true;
-            Target.NormalAttackDamage += NABUffData.NABuffAmount;
+            Target.NormalAttackDamage -= NABUffData.NABuffAmount;
             EffectStack = 0;
             base.OnEffectEnd();
         }
