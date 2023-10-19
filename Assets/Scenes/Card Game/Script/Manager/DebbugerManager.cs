@@ -19,6 +19,10 @@ public class DebbugerManager : MonoBehaviour
             Monster1.UseNormalAttack(Monster2);
             Assert.AreNotEqual(Monster2.m_component.m_health.CurrentHealthValue, healthMonster2Before);
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            
+        }
         
     }
 }

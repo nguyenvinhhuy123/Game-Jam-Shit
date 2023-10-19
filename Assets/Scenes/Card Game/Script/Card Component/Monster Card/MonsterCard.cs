@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using System.Data.Common;
+using BuffSystem;
+using System.Linq;
+using UnityEngine.Events;
 
 [ExecuteAlways]
 [RequireComponent(typeof(Health),typeof(Attack))]
@@ -28,7 +31,6 @@ public class MonsterCard : Card
     public MonsterSkill Skill {get {return m_skill;} set {m_skill = value;}}
     [SerializeField] private int m_normalAttackDamage;
 
-
     //? Should we use a formula here , Or Use a complete different scale??
     //!Option 1:
     //*NADamage = attack*multiplier + debuff */
@@ -47,6 +49,12 @@ public class MonsterCard : Card
     public int SkillDamage {get {return m_skillDamage;} set {m_skillDamage = value;}}
     
     #endregion
+    
+    #region Buff System
+    [SerializeField] private readonly Dictionary<BuffSOData, BuffHandler> m_buffDic = new Dictionary<BuffSOData, BuffHandler>();
+    #endregion
+    private PlayerAuthority currentAuthority;
+    private UnityAction<PlayerAuthority> OnTurnChangeAction;
     void InitData()
     {
         #region set up attribute
@@ -59,6 +67,7 @@ public class MonsterCard : Card
             CardName = m_data.Name; 
             m_animationAsset = m_data.SkeletonAsset;
         #endregion
+        
     }
     void OnEnable()
     {
@@ -67,6 +76,7 @@ public class MonsterCard : Card
     void Awake()
     {
         m_component.InitComponent(this.gameObject);
+        OnTurnChangeAction += OnTurnChange;
     }
     void Start()
     {
@@ -74,6 +84,7 @@ public class MonsterCard : Card
         m_component.m_axieAnimation.AnimationState.SetAnimation(0,  "action/idle/normal", true);
         InitData();
         m_component.m_health.InitHealth(m_health);
+        TurnManager.Instance.AddListener(OnTurnChangeAction);
     }
     void OnValidate()
     {
@@ -104,5 +115,43 @@ public class MonsterCard : Card
     {
         //TODO: Add constrain when target card = our card
         m_skill?.OnUse(target, this as MonsterCard);
+    }
+    public void RequestEndOfEffect(GameObject caller, BuffHandler buff)
+    {
+        if (m_buffDic.ContainsKey(buff.Data))
+        {
+            m_buffDic[buff.Data].RequestEndOfEffect(caller);
+            if (m_buffDic[buff.Data].IsFinished)
+            {
+                m_buffDic.Remove(buff.Data);
+            }
+        }
+        else 
+        {
+            Debug.Log("Dont have needed buff");
+        }
+    }
+    public void AddBuff(BuffHandler buff)
+    {
+        if (m_buffDic.ContainsKey(buff.Data))
+        {
+            m_buffDic[buff.Data].ActivateEffect();
+        }
+        else 
+        {
+            m_buffDic.Add(buff.Data, buff);
+            buff.ActivateEffect();
+        }
+    }
+    public void OnTurnChange(PlayerAuthority authority)
+    {
+        foreach (var buff in m_buffDic.Values.ToList())
+        {
+            buff.OnTurnChange();
+            if (buff.IsFinished)
+            {
+                m_buffDic.Remove(buff.Data);
+            }
+        }
     }
 }
