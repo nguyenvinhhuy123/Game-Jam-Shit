@@ -6,8 +6,16 @@ using UnityEngine;
 public abstract class SpellCardSOData : CardSOData
 {
     public int SpellCost;
-    public virtual void Spell(MonsterCard target, GameObject caster){}
-    public virtual void Spell(GameObject caster){}
+    public MonsterSkill MainType;
+    public MonsterCard MainClass;
+    public int MainTypeEnergyCost;
+    public int OtherTypeEnergyCost;
+    public void CheckUsable(PlayerManager player)
+    {
+
+    }
+    public virtual void Spell(MonsterCard target, GameObject player){}
+    public virtual void Spell(GameObject player){}
     public virtual void RequestEndCardEffect(SpellCard caller)
     {
         

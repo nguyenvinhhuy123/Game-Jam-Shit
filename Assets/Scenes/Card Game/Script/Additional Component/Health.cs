@@ -8,23 +8,33 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int m_initHealthValue;
-    public int InitHealthValue {get {return m_initHealthValue;} set {m_initHealthValue = value;}}
+    public int InitHealthValue {get {return m_initHealthValue;}}
     [SerializeField] private int m_currentHealth;
-    public int CurrentHealthValue {get {return m_currentHealth;} set{m_currentHealth -= value;}}
+    public int CurrentHealthValue {get {return m_currentHealth;}}
     [SerializeField] private int m_shieldValue;
-    public int Shield {get {return m_shieldValue;} set {m_shieldValue = value;}}
+    public int Shield {get {return m_shieldValue;}}
     [SerializeField] private int m_shieldDuration; //*Countdown by turn*/
-    public int ShieldDuration {get {return m_shieldDuration;} set {m_shieldDuration = value;}}
+    public int ShieldDuration {get {return m_shieldDuration;}}
     [SerializeField] private bool m_unitInactive;
     public bool UnitInactive {get {return m_unitInactive;}}
     
+    private UnityAction<PlayerAuthority> OnTurnChangeAction;
     public UnityEvent OnKillSelfEvent;
+    void OnEnable()
+    {
+        OnTurnChangeAction += OnTurnChange;
+    }
+    void OnDisable()
+    {
+        OnTurnChangeAction -= OnTurnChange;
+    }
     void Awake()
     {
         OnKillSelfEvent = new UnityEvent();
     }
     void Start()
     {
+        TurnManager.Instance.AddListener(OnTurnChangeAction);
     }
     public void DamageSelf(int damage)
     {
@@ -80,10 +90,10 @@ public class Health : MonoBehaviour
             m_currentHealth = m_initHealthValue;
         }
     }
-    private void OnTurnChange()
+    private void OnTurnChange(PlayerAuthority authority)
     {
         m_shieldDuration -= 1;
-        if (m_shieldDuration < 0)
+        if (m_shieldDuration <= 0)
         {
             m_shieldValue = 0;
         }
@@ -100,5 +110,10 @@ public class Health : MonoBehaviour
     public void RemoveListener(UnityAction action)
     {
         OnKillSelfEvent.RemoveListener(action);
+    }
+    public void ShieldSelf(int shieldAmount, int duration)
+    {
+        m_shieldValue = shieldAmount;
+        m_shieldDuration = duration;
     }
 }
