@@ -13,10 +13,15 @@ public class TestSpell1 : SpellCardSOData
     [SerializeField] private LifeTimeType m_lifeTimeType;
     [SerializeField] private int m_NABuffAmount;
     [SerializeField] private StackConditionType m_stackConditionType;
-    public override void Spell(MonsterCard target, GameObject caster)
+    private MonsterCard m_cacheTarget;
+    public override void Spell(MonsterCard target, GameObject player)
     {
+        if (m_NABUffHandler != null)
+        {
+            m_cacheTarget.RequestEndOfEffect(player.gameObject, m_NABUffHandler as BuffHandler);
+        }
         m_NABuffSOData = NABuffBaseSOData.CreateInstance<NABuffBaseSOData>();
-        m_NABUffHandler = m_NABuffSOData.InitHandler(target, caster) as NABuffHandler;
+        m_NABUffHandler = m_NABuffSOData.InitHandler(target, player) as NABuffHandler;
 
         m_NABuffSOData.Duration = m_duration;
         m_NABuffSOData.EndConditionType = m_lifeTimeType;
@@ -24,9 +29,10 @@ public class TestSpell1 : SpellCardSOData
         m_NABuffSOData.Stacking = m_stackConditionType;
 
         target.AddBuff(m_NABUffHandler);
+        m_cacheTarget = target;
     }
     public override void RequestEndCardEffect(SpellCard caller)
     {
-        m_NABUffHandler.RequestEndOfEffect(caller.gameObject);
+        m_cacheTarget.RequestEndOfEffect(caller.gameObject, m_NABUffHandler as BuffHandler);
     }
 }

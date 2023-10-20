@@ -21,7 +21,7 @@ public class DebbugerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             int healthMonster2Before = Monster2.m_component.m_health.CurrentHealthValue;
-            Monster1.UseNormalAttack(Monster2);
+            Monster1.UseNormalAttack(Monster2, null);
             Assert.AreNotEqual(Monster2.m_component.m_health.CurrentHealthValue, healthMonster2Before);
         }
 
@@ -44,5 +44,17 @@ public class DebbugerManager : MonoBehaviour
         {
             TurnManager.Instance.RequestEndOfTurn(PlayerAuthority.PLAYER_2);
         }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            TestHealingEffect();
+        }
+    }
+    void TestHealingEffect()
+    {
+        int healthBefore = Monster2.m_component.m_health.CurrentHealthValue;
+        Monster2.UseSpell(Monster2, null);
+        if (healthBefore < Monster2.m_component.m_health.InitHealthValue)
+        Assert.AreNotEqual(healthBefore, Monster2.m_component.m_health.CurrentHealthValue);
+        else Assert.AreEqual(healthBefore, Monster2.m_component.m_health.CurrentHealthValue);
     }
 }

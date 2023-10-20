@@ -317,8 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4016d5ba427db6849809f4cd57406db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerHand: {fileID: 0}
-  m_enemyHand: {fileID: 0}
+  enemyManager: {fileID: 0}
   m_Environment: {fileID: 0}
   m_thisAuthority: 0
 --- !u!1 &1177958360
@@ -505,6 +504,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1456223198881165936, guid: fe8b0b38ff02c364f8ad9143c994a94c, type: 3}
+      propertyPath: m_skill
+      value: 
+      objectReference: {fileID: 11400000, guid: 38e5a1596874df641979fb70d93c7ccd, type: 2}
     - target: {fileID: 1456223198881165937, guid: fe8b0b38ff02c364f8ad9143c994a94c, type: 3}
       propertyPath: m_RootOrder
       value: 2
