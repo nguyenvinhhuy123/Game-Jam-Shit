@@ -8,10 +8,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject m_Environment;
     [SerializeField] private PlayerAuthority m_thisAuthority;
     
-    private MonsterCard[] m_monsterCards = new MonsterCard[3];
-    private SpellCardSOData[] m_spellDeck = new SpellCardSOData[20];
-    private List<SpellCard> m_spellHand;
-    private List<Energy> m_energies;
+    private MonsterCard[] m_monsterCardsHand = new MonsterCard[3];
+    private SpellCard[] m_spellHand = new SpellCard[10];
+    private List<SpellCard> m_spellDeck;
+    private List<Energy> m_energyDeck;
     //TODO: 
     void OnTurnChange()
     {
@@ -25,6 +25,14 @@ public class PlayerManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    public void DrawCard()
+    {
+
+    }
+    public void DrawEnergy()
     {
         
     }
