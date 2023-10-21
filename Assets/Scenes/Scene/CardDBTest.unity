@@ -495,6 +495,34 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 676479236707910029, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 676479236707910029, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 676479236707910029, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 676479236707910029, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 676479236707910029, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 676479236707910029, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 676479236707910029, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
 --- !u!1001 &1456223198862312009
@@ -634,6 +662,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7401476656180674245, guid: 7794a6451ec49554abcff04963fd51d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401476656180674300, guid: 7794a6451ec49554abcff04963fd51d9, type: 3}
+      propertyPath: m_class
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:

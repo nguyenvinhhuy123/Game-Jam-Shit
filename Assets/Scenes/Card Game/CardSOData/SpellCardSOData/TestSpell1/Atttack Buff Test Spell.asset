@@ -14,8 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   FrontSprite: {fileID: 0}
-  BackSprite: {fileID: 21300000, guid: e6bd9038895bb4d6d80ac65fb8b7e5d6, type: 3}
+  BackSprite: {fileID: 0}
   SpellCost: 3
+  MainType: 0
+  MainClass: 0
+  MainTypeEnergyCost: 1
+  OtherTypeEnergyCost: 1
+  IsFastAction: 0
   m_duration: 0
   m_lifeTimeType: 1
   m_NABuffAmount: 2
