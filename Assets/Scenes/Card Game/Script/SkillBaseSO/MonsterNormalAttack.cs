@@ -9,11 +9,12 @@ public class MonsterNormalAttack : MonsterSkill
     {
         #region Set Default NA Parameter
         SkillName = "Normal Attack";
-        EnergyCost = 2;
+        SameTypeEnergyCost = 1;
+        OtherTypeEnergyCost = 1;
         SkillDescription = "Attack";
         #endregion
     }
-    public override void OnUse(MonsterCard target, MonsterCard user)
+    public override void OnUse(MonsterCard target, MonsterCard user, PlayerManager player)
     {
         user.m_component.m_attack.PerformAttack(target, user.NormalAttackDamage);
     }

@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: NormalAttack
   m_EditorClassIdentifier: 
   SkillName: Normal Attack
-  EnergyCost: 2
+  MainTypeEnergy: 3
+  SameTypeEnergyCost: 1
+  OtherTypeEnergyCost: 1
   SkillDescription: Attack
