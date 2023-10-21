@@ -8,6 +8,15 @@ public enum PlayerAuthority
     PLAYER_1,
     PLAYER_2
 }
+public enum Phase
+{
+    PREPARATION_PHASE,
+    PRE_COMBAT_PHASE,
+    COMBAT_PHASE,
+    POST_COMBAT_PHASE,
+    END_PHASE
+}
+
 public class TurnManager : PersistenceSingleton<TurnManager>
 {
     private UnityEvent<PlayerAuthority> OnEndOfTurn;

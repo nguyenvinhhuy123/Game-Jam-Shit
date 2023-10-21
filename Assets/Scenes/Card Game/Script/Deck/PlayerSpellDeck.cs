@@ -12,7 +12,7 @@ public class PlayerSpellDeck : MonoBehaviour
     {
         foreach (var spellCard in deckBuilded)
         {
-            if (m_spellDeck.Count >=20)
+            if (m_spellDeck.Count >= MaxCardInDeck)
             {
                 Debug.Log("Deck is full");
                 return;

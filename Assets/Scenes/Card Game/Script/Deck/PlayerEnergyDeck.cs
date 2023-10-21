@@ -11,7 +11,7 @@ public class PlayerEnergyDeck : MonoBehaviour
     {
         foreach (var energy in deckBuilded)
         {
-            if (m_energyDeck.Count >=20)
+            if (m_energyDeck.Count >= MaxCardInDeck)
             {
                 Debug.Log("Deck is full");
                 return;
