@@ -64,6 +64,8 @@ public class MonsterCard : Card
             m_health = m_data.Health;
             m_normalAttackDamage = m_data.NormalAttackDamage;
             m_skillDamage = m_data.SkillDamage;
+
+            CardID = m_data.CardID;
             FrontSprite = m_data.FrontSprite;
             BackSprite = m_data.BackSprite;
             CardName = m_data.Name; 

@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game-Jam-Shit/SpellSO")]
 public abstract class SpellCardSOData : CardSOData
 {
-    public int SpellCost;
-    public MonsterSkill MainType;
-    public MonsterCard MainClass;
+    public MonsterType MainType;
+    public MonsterClass MainClass;
     public int MainTypeEnergyCost;
     public int OtherTypeEnergyCost;
+    public bool IsFastAction;
     public void CheckUsable(PlayerManager player)
     {
 
