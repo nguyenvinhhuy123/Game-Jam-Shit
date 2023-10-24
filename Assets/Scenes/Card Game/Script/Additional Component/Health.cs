@@ -20,6 +20,9 @@ public class Health : MonoBehaviour
     
     private UnityAction<PlayerAuthority> OnTurnChangeAction;
     public UnityEvent OnKillSelfEvent;
+    public UnityEvent<int, bool> OnHit;
+    //* This event should return int: total damage receive; bool: is shielded */
+    #region Callback
     void OnEnable()
     {
         OnTurnChangeAction += OnTurnChange;
@@ -34,8 +37,20 @@ public class Health : MonoBehaviour
     }
     void Start()
     {
-        TurnManager.Instance.AddListener(OnTurnChangeAction);
+        TurnManager.Instance.AddEndOfTurnListener(OnTurnChangeAction);
     }
+    void OnTurnChange(PlayerAuthority authority)
+    {
+        m_shieldDuration -= 1;
+        if (m_shieldDuration <= 0)
+        {
+            m_shieldValue = 0;
+        }
+    }
+
+    #endregion
+
+    #region Method
     public void DamageSelf(int damage)
     {
         if (m_currentHealth <= 0)
@@ -90,24 +105,16 @@ public class Health : MonoBehaviour
             m_currentHealth = m_initHealthValue;
         }
     }
-    private void OnTurnChange(PlayerAuthority authority)
-    {
-        m_shieldDuration -= 1;
-        if (m_shieldDuration <= 0)
-        {
-            m_shieldValue = 0;
-        }
-    }
     public void InitHealth(int health)
     {
         m_initHealthValue = health;
         m_currentHealth = m_initHealthValue;
     }
-    public void AddListener(UnityAction action)
+    public void AddOnKillSelfListener(UnityAction action)
     {
         OnKillSelfEvent.AddListener(action);
     }
-    public void RemoveListener(UnityAction action)
+    public void RemoveOnKillSelfListener(UnityAction action)
     {
         OnKillSelfEvent.RemoveListener(action);
     }
@@ -116,4 +123,14 @@ public class Health : MonoBehaviour
         m_shieldValue = shieldAmount;
         m_shieldDuration = duration;
     }
+    public void AddOnHitListener(UnityAction<int, bool> action)
+    {
+        OnHit.AddListener(action);
+    }
+    public void RemoveOnHitListener(UnityAction<int, bool>  action)
+    {
+        OnHit.RemoveListener(action);
+    }
+
+    #endregion
 }

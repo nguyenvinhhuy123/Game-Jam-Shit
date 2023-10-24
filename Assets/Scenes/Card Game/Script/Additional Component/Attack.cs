@@ -26,11 +26,11 @@ public class Attack : MonoBehaviour
         }
         targetHealth.DamageSelf(sourceDamage);
     }
-    public void AddListener(UnityAction action)
+    public void AddPerformAttackListener(UnityAction action)
     {
         OnPerformAttackEvent.AddListener(action);
     }
-    public void RemoveListener(UnityAction action)
+    public void RemovePerformAttackListener(UnityAction action)
     {
         OnPerformAttackEvent.RemoveListener(action);
     }

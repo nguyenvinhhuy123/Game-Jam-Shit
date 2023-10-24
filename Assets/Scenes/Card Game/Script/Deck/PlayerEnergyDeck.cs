@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerEnergyDeck : MonoBehaviour
 {
     public int MaxCardInDeck = 10; 
-    public List<Energy> m_energyDeck;
+    [SerializeField] private List<Energy> m_energyDeck;
     
     public void LoadFromCollection(List<Energy> deckBuilded)
     {

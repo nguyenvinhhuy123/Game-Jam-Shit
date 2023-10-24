@@ -56,7 +56,7 @@ public class CardDatabase : ScriptableObject {
     void setUniqueIDSpell()
     {
         SpellCardDatabase.Last().SetID(CreateUniqueID());
-            SpellCardCounter++;
+        SpellCardCounter++;
     }
     
 }

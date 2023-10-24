@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerSpellDeck : MonoBehaviour
 {
     public int MaxCardInDeck = 20; 
-    public List<SpellCard> m_spellDeck;
+    [SerializeField] private List<SpellCard> m_spellDeck;
     
     public void LoadFromCollection(List<SpellCard> deckBuilded)
     {

@@ -38,11 +38,11 @@ public class DebbugerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            TurnManager.Instance.RequestEndOfTurn(PlayerAuthority.PLAYER_1);
+            TurnManager.Instance.RequestEndOfPhase(PlayerAuthority.PLAYER_1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            TurnManager.Instance.RequestEndOfTurn(PlayerAuthority.PLAYER_2);
+            TurnManager.Instance.RequestEndOfPhase(PlayerAuthority.PLAYER_2);
         }
         if (Input.GetKeyDown(KeyCode.H))
         {

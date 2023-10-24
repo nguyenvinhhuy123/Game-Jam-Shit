@@ -56,6 +56,11 @@ public class MonsterCard : Card
 
     #endregion
     private UnityAction<PlayerAuthority> OnTurnChangeAction;
+    private UnityAction OnKillSelfAction;
+    private UnityAction<int, bool> OnHitAction;
+    private UnityAction<int> OnPerformAttack;
+
+    #region Callback
     void InitData()
     {
         #region set up attribute
@@ -79,10 +84,13 @@ public class MonsterCard : Card
     {
         m_component.InitComponent(this.gameObject);
         OnTurnChangeAction += OnTurnChange;
+        //TODO: Assign callback for action
     }
     void OnDisable()
     {
         OnTurnChangeAction -= OnTurnChange;
+        //TODO: Assign callback for action
+
     }
     void Awake()
     {
@@ -90,11 +98,15 @@ public class MonsterCard : Card
     }
     void Start()
     {
+        
         m_component.m_axieAnimation.skeletonDataAsset = m_data.SkeletonAsset;
         m_component.m_axieAnimation.AnimationState.SetAnimation(0,  "action/idle/normal", true);
         InitData();
         m_component.m_health.InitHealth(m_health);
-        TurnManager.Instance.AddListener(OnTurnChangeAction);
+        TurnManager.Instance.AddEndOfTurnListener(OnTurnChangeAction);
+        m_component.m_health.AddOnHitListener(OnHitAction);
+        m_component.m_health.AddOnKillSelfListener(OnKillSelfAction);
+        //TODO: Assign callback for action
     }
     void OnValidate()
     {
@@ -116,6 +128,18 @@ public class MonsterCard : Card
             m_component.m_axieAnimation.skeletonDataAsset = m_data.SkeletonAsset;
         }
     }
+    void OnHit()
+    {
+
+    }
+    void OnKillSelf()
+    {
+
+    }
+
+    #endregion
+
+    #region Method
     public void UseNormalAttack(MonsterCard target, PlayerManager player)
     {
         //TODO: Add constrain when target card = our card
@@ -158,7 +182,7 @@ public class MonsterCard : Card
         }
         
     }
-    public void OnTurnChange(PlayerAuthority authority)
+    private void OnTurnChange(PlayerAuthority authority)
     {
         foreach (var buff in m_buffDic.Values.ToList())
         {
@@ -169,4 +193,7 @@ public class MonsterCard : Card
             }
         }
     }
+    
+    #endregion
+    
 }
