@@ -20,13 +20,15 @@ public enum Phase
 public class TurnManager : PersistenceSingleton<TurnManager>
 {
     private UnityEvent<PlayerAuthority> OnEndOfTurn;
+    private UnityEvent<Phase> OnEndOfPhase;
     private int m_turnCount = 0;
     public int TurnCount {get {return m_turnCount;}}
     private PlayerAuthority m_authority;
     public PlayerAuthority Authority {get {return m_authority;}}
     private PlayerAuthority m_firstToMove;
     public PlayerAuthority FirstToMove {get {return m_authority;}}
-
+    private Phase m_currentPhase;
+    
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -36,6 +38,21 @@ public class TurnManager : PersistenceSingleton<TurnManager>
     void Start()
     {
         m_turnCount = 0;
+    }
+    public void RequestEndOfPhase(PlayerAuthority requester)
+    {
+        if (requester != m_authority)
+        {
+            Debug.Log("Not " + requester + " turn, cannot request end of phase");
+            return;
+        }
+        if (m_currentPhase == Phase.END_PHASE)
+        {
+            RequestEndOfTurn(requester);
+            return;
+        }
+        m_currentPhase ++;
+        
     }
     public void RequestEndOfTurn(PlayerAuthority requester)
     {
@@ -58,6 +75,7 @@ public class TurnManager : PersistenceSingleton<TurnManager>
         {
             m_authority = PlayerAuthority.PLAYER_1;
         }
+        m_currentPhase = Phase.PREPARATION_PHASE;
         OnEndOfTurn.Invoke(m_authority);
     }
     /// <summary>
@@ -72,6 +90,7 @@ public class TurnManager : PersistenceSingleton<TurnManager>
         m_firstToMove = diceRollWinner;
         m_turnCount ++;
         m_authority = m_firstToMove;
+        m_currentPhase = Phase.PREPARATION_PHASE;
     }
     /// <summary>
     /// add listener to end of turn event
@@ -81,7 +100,7 @@ public class TurnManager : PersistenceSingleton<TurnManager>
     /// action to add
     /// </summary>
     /// <param name="action"></param>
-    public void AddListener(UnityAction<PlayerAuthority> action)
+    public void AddEndOfTurnListener(UnityAction<PlayerAuthority> action)
     {
         OnEndOfTurn.AddListener(action);
     }
@@ -94,8 +113,34 @@ public class TurnManager : PersistenceSingleton<TurnManager>
     /// action to remove
     /// </summary>
     /// <param name="action"></param>
-    public void RemoveListener(UnityAction<PlayerAuthority> action)
+    public void RemoveEndOfTurnListener(UnityAction<PlayerAuthority> action)
     {
         OnEndOfTurn.RemoveListener(action);
     }
+    /// <summary>
+    /// Add listener to end of phase event
+    /// EndOfPhaseEvent will return the current phase after change phase
+    /// </summary>
+    /// <param name="action"></param> <summary>
+    /// action to add
+    /// </summary>
+    /// <param name="action"></param>
+    public void AddEndOfPhaseListener(UnityAction<Phase> action)
+    {
+        OnEndOfPhase.AddListener(action);
+    }
+    /// <summary>
+    /// Remove listener to end of phase event
+    /// EndOfPhaseEvent will return the current phase after change phase
+    /// </summary>
+    /// <param name="action"></param> <summary>
+    /// action to remove
+    /// </summary>
+    /// <param name="action"></param>
+    public void RemoveEndOfTurnListener(UnityAction<Phase> action)
+    {
+        OnEndOfPhase.RemoveListener(action);
+    }
+    
+    
 }
