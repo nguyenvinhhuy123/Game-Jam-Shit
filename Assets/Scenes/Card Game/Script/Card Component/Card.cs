@@ -9,7 +9,7 @@ public abstract class Card : MonoBehaviour
     [SerializeField] private string m_cardName;
     public string CardName {get {return m_cardName;} protected set {m_cardName = value;}}
     [SerializeField] private int m_cardID;
-    public int CardID {get {return m_cardID;} protected set {m_cardID = value;}}
+    public int CardID {get {return m_cardID;} set {m_cardID = value;}}
 
     #region Sprite
     [SerializeField] private Sprite m_frontSprite;
