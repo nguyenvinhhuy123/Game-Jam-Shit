@@ -17,3 +17,4 @@ MonoBehaviour:
   SameTypeEnergyCost: 2
   OtherTypeEnergyCost: 2
   SkillDescription: Heal target monster for 2 HP
+  NeedTarget: 1

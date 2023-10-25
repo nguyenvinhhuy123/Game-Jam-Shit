@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game-Jam-Shit/MonsterSkill/MonsterNormalAttack")]
 public class MonsterNormalAttack : MonsterSkill
 {
+    [Tooltip("Shouldn't change needTarget value in normal attack to false")]
+    //*This shoudlnt be the case in implementation*/
     public MonsterNormalAttack()
     {
         #region Set Default NA Parameter
@@ -12,6 +14,9 @@ public class MonsterNormalAttack : MonsterSkill
         SameTypeEnergyCost = 1;
         OtherTypeEnergyCost = 1;
         SkillDescription = "Attack";
+        
+        NeedTarget = true;
+        
         #endregion
     }
     public override void OnUse(MonsterCard target, MonsterCard user, PlayerManager player)

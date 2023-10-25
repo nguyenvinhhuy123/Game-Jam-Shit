@@ -120,9 +120,12 @@ public class MonsterCard : Card
             m_data.Health = m_health;
             m_data.NormalAttackDamage = m_normalAttackDamage;
             m_data.SkillDamage = m_skillDamage;
+
             m_data.FrontSprite = FrontSprite;
             m_data.BackSprite = BackSprite;
             m_data.Name = CardName; 
+            m_data.SetID(CardID);
+
             m_data.SkeletonAsset = m_animationAsset;
             Debug.Log(m_component.m_axieAnimation);
             m_component.m_axieAnimation.skeletonDataAsset = m_data.SkeletonAsset;
@@ -142,13 +145,56 @@ public class MonsterCard : Card
     #region Method
     public void UseNormalAttack(MonsterCard target, PlayerManager player)
     {
+        if (TurnManager.Instance.Authority != player.ThisAuthority)
+        {
+            Debug.Log("Can not use attack, not our turn yet");
+            return;
+        }
+        if (TurnManager.Instance.CurrentPhase != Phase.COMBAT_PHASE)
+        {
+            Debug.Log("Can not use attack, not attack phase yet");
+            return;
+        }
+        if (target == null)
+        {
+            Debug.Log("Cannot find target monster");
+            return;
+        }
         //TODO: Add constrain when target card = our card
         m_normalAttack?.OnUse(target, this as MonsterCard, player);
     }
-    public void UseSpell(MonsterCard target, PlayerManager player)
+    public void UseSkill(MonsterCard target, PlayerManager player)
     {
+        if (TurnManager.Instance.Authority != player.ThisAuthority)
+        {
+            Debug.Log("Can not use spell, not our turn yet");
+            return;
+        }
+        if (TurnManager.Instance.CurrentPhase != Phase.COMBAT_PHASE)
+        {
+            Debug.Log("Can not use spell, not combat phase yet");
+            return;
+        }
+        if (!m_skill.NeedTarget)
+        {
+            if (target != null)
+            {
+                Debug.Log("Target shouldn't be choose here");
+            }
+            m_skill?.OnUse(this as MonsterCard, player);
+            return;
+        }
+        if (m_skill.NeedTarget)
+        {
+            if (target == null)
+            {
+                Debug.Log("Cannot find target monster");
+                return;
+            }
+            m_skill?.OnUse(target, this as MonsterCard, player);
+        }
         //TODO: Add constrain when target card = our card
-        m_skill?.OnUse(target, this as MonsterCard, player);
+        
     }
     public void RequestEndOfEffect(GameObject caller, BuffHandler buff)
     {
