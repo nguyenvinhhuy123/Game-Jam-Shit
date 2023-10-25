@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : PersistenceSingleton<GameManager>
 {
-    [SerializeField] private PlayerManager Player1;
-    [SerializeField] private PlayerManager Player2;
+    public PlayerManager Player1;
+    public PlayerManager Player2;
 
     protected override void Awake()
     {
@@ -18,7 +18,7 @@ public class GameManager : PersistenceSingleton<GameManager>
     {
 
     }
-    void LoadPlayerMonster ()
+    void LoadPlayerMonster()
     {
 
     }
