@@ -9,8 +9,8 @@ public class SpellCard : Card
     #region Attribute
     [SerializeField] private bool m_isFastAction;
     public bool IsFastAction {get {return m_isFastAction;}}
-    [SerializeField] private MonsterType m_mainType;
-    public MonsterType MainType {get {return MainType;}}
+    [SerializeField] private MonsterTrait m_mainType;
+    public MonsterTrait MainType {get {return MainType;}}
     [SerializeField] private MonsterClass m_mainClass;
     public MonsterClass MainClass {get {return m_mainClass;}}
     [SerializeField] private int m_mainTypeEnergyCost;
