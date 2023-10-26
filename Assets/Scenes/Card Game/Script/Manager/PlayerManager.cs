@@ -49,6 +49,10 @@ public class PlayerManager : MonoBehaviour
     {
         
     }
+    public void LoadPlayerMonster()
+    {
+
+    }
     public void DrawCard()
     {
 
