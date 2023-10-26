@@ -15,6 +15,10 @@ public class Health : MonoBehaviour
     public int Shield {get {return m_shieldValue;}}
     [SerializeField] private int m_shieldDuration; //*Countdown by turn*/
     public int ShieldDuration {get {return m_shieldDuration;}}
+    [SerializeField] private int m_DOT;
+    public int DOT {get {return m_DOT;}}
+    [SerializeField] private int m_DOTDuration; //*Countdown by turn*/
+    public int DOTDuration {get {return m_DOTDuration;}}
     [SerializeField] private bool m_unitInactive;
     public bool UnitInactive {get {return m_unitInactive;}}
     
@@ -45,6 +49,11 @@ public class Health : MonoBehaviour
         if (m_shieldDuration <= 0)
         {
             m_shieldValue = 0;
+        }
+        if (m_DOTDuration > 0)
+        {
+            DamageSelf(DOT);
+            m_DOTDuration--;
         }
     }
 
@@ -81,9 +90,10 @@ public class Health : MonoBehaviour
             KillSelf();
         }
     }
-    public void ApplyDOTSelf(int DOTDamage, int Duration)
+    public void ApplyDOTSelf(int DOTDamage, int duration)
     {
-
+        if (DOTDamage > m_DOT) m_DOT = DOTDamage;
+        if (duration > m_DOTDuration) m_DOTDuration = duration;
     }
     private void KillSelf()
     {
