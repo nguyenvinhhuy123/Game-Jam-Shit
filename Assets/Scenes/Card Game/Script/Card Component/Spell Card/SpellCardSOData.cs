@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game-Jam-Shit/SpellSO")]
 public abstract class SpellCardSOData : CardSOData
 {
-    public MonsterType MainType;
+    public MonsterTrait MainType;
     public MonsterClass MainClass;
     public int MainTypeEnergyCost;
     public int OtherTypeEnergyCost;
