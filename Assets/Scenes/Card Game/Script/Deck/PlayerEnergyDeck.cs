@@ -7,7 +7,7 @@ public class PlayerEnergyDeck : MonoBehaviour
     public int MaxCardInDeck = 10; 
     [SerializeField] private List<Energy> m_energyDeck;
     
-    public void LoadFromCollection(List<Energy> deckBuilded)
+    public void LoadFromCollection(Energy[] deckBuilded)
     {
         foreach (var energy in deckBuilded)
         {

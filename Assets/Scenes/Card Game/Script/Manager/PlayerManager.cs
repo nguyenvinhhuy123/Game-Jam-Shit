@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerManager enemyManager;
     [SerializeField] private GameObject m_Environment;
     [SerializeField] private PlayerAuthority m_thisAuthority;
+    [SerializeField] private BuildedDeckContainer m_player_Collection;
     public PlayerAuthority ThisAuthority {get {return m_thisAuthority;}}
     private MonsterCard[] m_monsterCardsHand = new MonsterCard[3];
     private MonsterCard m_activeMonster;
@@ -15,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     private Energy[] m_energyHand = new Energy[10];
     private PlayerSpellDeck m_spellDeck;
     private PlayerEnergyDeck m_energyDeck;
+    private PlayerMonsterDeck m_monsterDeck;
     #region action
     private UnityAction<PlayerAuthority> OnTurnChangeAction;
     private UnityAction<PlayerAuthority> OnPhaseChangeAction;
@@ -37,6 +39,7 @@ public class PlayerManager : MonoBehaviour
     {
         m_spellDeck = GetComponentInChildren<PlayerSpellDeck>();
         m_energyDeck = GetComponentInChildren<PlayerEnergyDeck>();
+        m_monsterDeck = GetComponentInChildren<PlayerMonsterDeck>();
     }
     // Start is called before the first frame update
     void Start()
