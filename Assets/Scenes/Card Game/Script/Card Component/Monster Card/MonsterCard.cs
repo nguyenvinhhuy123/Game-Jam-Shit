@@ -23,8 +23,8 @@ public class MonsterCard : Card
 
     [SerializeField] private int m_health;
     public int Health { get { return m_health; } set { m_health = value; } }
-    [SerializeField] private MonsterTrait m_type;
-    public MonsterTrait Type { get { return m_type; } private set { m_type = value; } }
+    [SerializeField] private MonsterTrait m_trait;
+    public MonsterTrait Trait { get { return m_trait; } private set { m_trait = value; } }
     [SerializeField] private MonsterClass m_class;
     public MonsterClass Class { get { return m_class; } set { m_class = value; } }
     [SerializeField] private MonsterNormalAttack m_normalAttack;
