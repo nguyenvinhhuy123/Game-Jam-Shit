@@ -54,6 +54,7 @@ namespace BuffSystem
         }
         public void RequestEndOfEffect(GameObject caller)
         {
+            if (Data.EndConditionType != LifeTimeType.END_ON_EXTERNAL_CALL) return;
             if (caller != Caster)
             {
                 Debug.Log("this Game Object dont have authority to call this fucntion");
