@@ -10,12 +10,11 @@ public class GameManager : PersistenceSingleton<GameManager>
 
     protected override void Awake()
     {
-
+        base.Awake();
     }
     void Start()
     {
-        StartCoroutine(nameof(WaitForRegister));
-        Setup();
+        StartCoroutine(nameof(Setup));
     }
     IEnumerator WaitForRegister()
     {
@@ -26,21 +25,45 @@ public class GameManager : PersistenceSingleton<GameManager>
             )
         );
     }
-    void Setup()
+    IEnumerator Setup()
     {
-        for (int i = 0; i < 5 ;i++)
+        yield return StartCoroutine(nameof(WaitForRegister));
+        LoadPlayerMonster();
+        for (int i = 0; i < 4 ;i++)
         {
-
+            Debug.Log("Deal 1 card");
+            DealCard();
+            yield return new WaitForSeconds(0.5f);
         }
+        for (int i = 0; i < 4; i++)
+        {
+            Debug.Log("Deal 1 energy");
+            DealEnergy();
+            yield return new WaitForSeconds(0.5f);
+        }
+        DiceRoll();
     }
     void LoadPlayerMonster()
     {
-        
+        Player1?.LoadPlayerMonster();
+        Player2?.LoadPlayerMonster();
     }
-    public void DrawCard()
+    public void DiceRoll()
     {
-        Player1.DrawCard();
-        Player2.DrawCard();
+        int player1Dice;
+        int player2Dice;
+
+        //TODO: Roll 2 dice to decide who go first
+    }
+    public void DealCard()
+    {
+        Player1?.DrawCard();
+        Player2?.DrawCard();
+    }
+    public void DealEnergy()
+    {
+        Player1?.DrawEnergy();
+        Player2?.DrawEnergy();
     }
     public void RegisterPlayer(PlayerManager playerToRegister)
     {

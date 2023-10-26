@@ -18,7 +18,8 @@ public abstract class MonsterSkill : ScriptableObject
     }
     public virtual void OnUse(MonsterCard target, MonsterCard user, PlayerManager player)
     {
-
+        //Attack:
+        //User.m_component
     }
     public virtual void OnUse(MonsterCard user, PlayerManager player)
     {
