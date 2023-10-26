@@ -23,7 +23,7 @@ public class PlayerMonsterDeck : MonoBehaviour
     {
         if (monsterIndex <  0 || monsterIndex >= MaxCardInDeck)
         {
-            Debug.Log("Invalid MOnster Index");
+            Debug.Log("Invalid Monster Index");
             return null;
         }
         return m_monsterDeck[monsterIndex];

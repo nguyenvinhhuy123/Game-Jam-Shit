@@ -30,6 +30,7 @@ public class PlayerEnergyDeck : MonoBehaviour
         Energy EnergyToDraw;
         EnergyToDraw = m_energyDeck[Random.Range(0, m_energyDeck.Count)];
         m_energyDeck.Remove(EnergyToDraw);
+        Debug.Log(EnergyToDraw);
         return EnergyToDraw;
     }
 }

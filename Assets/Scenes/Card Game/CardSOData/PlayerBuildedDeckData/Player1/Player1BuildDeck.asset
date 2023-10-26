@@ -13,38 +13,38 @@ MonoBehaviour:
   m_Name: Player1BuildDeck
   m_EditorClassIdentifier: 
   MonsterCards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7401476656180674300, guid: 7794a6451ec49554abcff04963fd51d9, type: 3}
+  - {fileID: 1456223198881165936, guid: fe8b0b38ff02c364f8ad9143c994a94c, type: 3}
+  - {fileID: 1456223198881165936, guid: fe8b0b38ff02c364f8ad9143c994a94c, type: 3}
   SpellCards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   Energies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
+  - {fileID: 11400000, guid: bb4484a18326a46449dc0c77e5e66b18, type: 2}
