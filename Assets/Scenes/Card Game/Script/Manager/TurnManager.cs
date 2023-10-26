@@ -28,6 +28,7 @@ public class TurnManager : PersistenceSingleton<TurnManager>
     private PlayerAuthority m_firstToMove;
     public PlayerAuthority FirstToMove {get {return m_authority;}}
     private Phase m_currentPhase;
+    public Phase CurrentPhase {get {return m_currentPhase;}}
     
     // Start is called before the first frame update
     protected override void Awake()

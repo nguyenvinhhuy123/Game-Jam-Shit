@@ -9,17 +9,47 @@ public class CardDatabase : ScriptableObject {
     public static int IDGenerator = 0;
     public int MonsterCardCounter {get; private set;}
     public int SpellCardCounter {get; private set;}
-    public List<MonsterCardSOData> MonsterCardDatabase = new List<MonsterCardSOData>();
-    public List<SpellCardSOData> SpellCardDatabase =  new List<SpellCardSOData>();
+    public List<MonsterCard> MonsterCardDatabase = new List<MonsterCard>();
+    public List<SpellCard> SpellCardDatabase =  new List<SpellCard>();
     int CreateUniqueID()
     {
         return IDGenerator++;
     }
     void OnValidate()
     {
+        if (
+            MonsterCardDatabase.Count == 0
+            && SpellCardDatabase.Count == 0
+        )
+        {
+            //Reset database card ID;
+            IDGenerator = 0;
+            MonsterCardCounter = 0;
+            SpellCardCounter = 0;
+            return;
+        }
+        if (MonsterCardCounter > MonsterCardDatabase.Count)
+        {
+            MonsterCardCounter = MonsterCardDatabase.Count;
+            return;
+        }
+        if (SpellCardCounter > SpellCardDatabase.Count)
+        {
+            SpellCardCounter = SpellCardDatabase.Count;
+            return;
+        }
         if (MonsterCardCounter < MonsterCardDatabase.Count)
         {
-            MonsterCardSOData lastAppend = MonsterCardDatabase.Last();
+            MonsterCard lastAppend = MonsterCardDatabase.Last();
+            
+            if (lastAppend == null)
+            {
+                #if UNITY_EDITOR
+                Debug.Log("last element is null, please add an element");
+                #endif
+                return;
+            }
+
             for (int iterator = 0; iterator < MonsterCardDatabase.Count - 1; iterator++)
             {
                 if (MonsterCardDatabase[iterator] == lastAppend)
@@ -30,11 +60,18 @@ public class CardDatabase : ScriptableObject {
                     return;
                 }
             }
-            setUniqueIDMonster();
+            SetUniqueIDMonster();
         }
         else if (SpellCardCounter < SpellCardDatabase.Count)
         {
-            SpellCardSOData lastAppend = SpellCardDatabase.Last();
+            SpellCard lastAppend = SpellCardDatabase.Last();
+            if (lastAppend == null)
+            {
+                #if UNITY_EDITOR
+                Debug.Log("last element is null, please add an element");
+                #endif
+                return;
+            }
             for (int iterator = 0; iterator < SpellCardDatabase.Count - 1; iterator++)
             {
                 if (SpellCardDatabase[iterator] == lastAppend)
@@ -45,17 +82,17 @@ public class CardDatabase : ScriptableObject {
                     return;
                 }
             }
-            setUniqueIDSpell();
+            SetUniqueIDSpell();
         }
     }
-    void setUniqueIDMonster()
+    void SetUniqueIDMonster()
     {
-        MonsterCardDatabase.Last().SetID(CreateUniqueID());
+        MonsterCardDatabase.Last().CardID = CreateUniqueID();
         MonsterCardCounter++;
     }
-    void setUniqueIDSpell()
+    void SetUniqueIDSpell()
     {
-        SpellCardDatabase.Last().SetID(CreateUniqueID());
+        SpellCardDatabase.Last().CardID = CreateUniqueID();
         SpellCardCounter++;
     }
     

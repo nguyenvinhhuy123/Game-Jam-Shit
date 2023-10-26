@@ -14,14 +14,16 @@ public class TestSpell1 : SpellCardSOData
     [SerializeField] private int m_NABuffAmount;
     [SerializeField] private StackConditionType m_stackConditionType;
     private MonsterCard m_cacheTarget;
-    public override void Spell(MonsterCard target, GameObject player)
+    public override void Spell(MonsterCard target, GameObject caller)
     {
         if (m_NABUffHandler != null)
         {
-            m_cacheTarget.RequestEndOfEffect(player.gameObject, m_NABUffHandler as BuffHandler);
+            Debug.Log("Shouldn't be here, a Spell Card shoudnt cast it spell 2 time");
+            //*Shouldnt be here, but this is helpful for testing
+            m_cacheTarget.RequestEndOfEffect(caller.gameObject, m_NABUffHandler as BuffHandler);
         }
         m_NABuffSOData = NABuffBaseSOData.CreateInstance<NABuffBaseSOData>();
-        m_NABUffHandler = m_NABuffSOData.InitHandler(target, player) as NABuffHandler;
+        m_NABUffHandler = m_NABuffSOData.InitHandler(target, caller) as NABuffHandler;
 
         m_NABuffSOData.Duration = m_duration;
         m_NABuffSOData.EndConditionType = m_lifeTimeType;

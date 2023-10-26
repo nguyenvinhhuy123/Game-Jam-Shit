@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpellCard : Card
@@ -7,8 +8,8 @@ public class SpellCard : Card
     [SerializeField] private SpellCardSOData m_data;
 
     #region Attribute
-    [SerializeField] private bool m_isFastAction;
-    public bool IsFastAction {get {return m_isFastAction;}}
+    [SerializeField] private bool m_isInstance;
+    public bool IsInstance {get {return m_isInstance;}}
     [SerializeField] private MonsterType m_mainType;
     public MonsterType MainType {get {return MainType;}}
     [SerializeField] private MonsterClass m_mainClass;
@@ -17,15 +18,33 @@ public class SpellCard : Card
     public int MainTypeEnergyCost {get {return m_mainTypeEnergyCost;} set {m_mainTypeEnergyCost = value;}}
     [SerializeField] private int m_otherTypeEnergyCost;
     public int OtherTypeEnergyCost {get {return m_otherTypeEnergyCost;} set {m_otherTypeEnergyCost = value;}}
-
+    [SerializeField] private bool m_needTarget;
+    public bool NeedTarget {get {return m_needTarget;}}
     #endregion
-    public void UseSelf(MonsterCard target)
+    public void UseSelf(MonsterCard target, PlayerManager player)
     {
-        m_data.Spell(target, this.gameObject);
-    }
-    public void UseSelf()
-    {
-        m_data.Spell(this.gameObject);
+        if ((TurnManager.Instance.Authority != player.ThisAuthority) && !IsInstance)
+        {
+            Debug.Log("Can not use spell, not our turn yet");
+            return;
+        }
+        if (!NeedTarget)
+        {
+            if (target != null)
+            {
+                Debug.Log("Target shouldn't be choose here");
+            }
+            m_data.Spell(this.gameObject);
+            return;
+        }
+        if (NeedTarget)
+        {
+            if (target == null)
+            {
+                Debug.Log("Cannot find target monster");
+            }
+            m_data.Spell(target, this.gameObject);
+        }
     }
     public void RequestEndCardEffect()
     {
@@ -41,11 +60,13 @@ public class SpellCard : Card
         m_data.MainType = m_mainType;
         m_data.MainTypeEnergyCost = m_mainTypeEnergyCost;
         m_data.OtherTypeEnergyCost =  m_otherTypeEnergyCost;
-        m_data.IsFastAction = m_isFastAction;
+        m_data.IsInstance = m_isInstance;
+        m_data.NeedTarget = m_needTarget;
 
         m_data.FrontSprite = FrontSprite;
         m_data.BackSprite = BackSprite;
         m_data.Name = CardName; 
+        m_data.SetID(CardID);
     }
     void InitData()
     {
@@ -53,7 +74,8 @@ public class SpellCard : Card
         m_mainType = m_data.MainType;
         m_mainTypeEnergyCost = m_data.MainTypeEnergyCost;
         m_otherTypeEnergyCost = m_data.OtherTypeEnergyCost;
-        m_isFastAction = m_data.IsFastAction;
+        m_isInstance = m_data.IsInstance;
+        m_needTarget = m_data.NeedTarget;
 
         CardID = m_data.CardID;
         FrontSprite = m_data.FrontSprite;
