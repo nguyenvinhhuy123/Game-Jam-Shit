@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CardDatabase
   m_EditorClassIdentifier: 
   MonsterCardDatabase:
-  - {fileID: 11400000, guid: 79b33379c6a329a4ebceefd9aa4ec00f, type: 2}
-  - {fileID: 11400000, guid: cd7878a1bf3b67a4aa7bc264d173e2fb, type: 2}
-  SpellCardDatabase: []
+  - {fileID: 7401476656180674300, guid: 7794a6451ec49554abcff04963fd51d9, type: 3}
+  - {fileID: 1456223198881165936, guid: fe8b0b38ff02c364f8ad9143c994a94c, type: 3}
+  SpellCardDatabase:
+  - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
