@@ -83,7 +83,7 @@ public class Health : MonoBehaviour
     }
     public void ApplyDOTSelf(int DOTDamage, int Duration)
     {
-
+        //obsolete, no need this
     }
     private void KillSelf()
     {
