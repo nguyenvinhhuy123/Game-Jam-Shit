@@ -24,29 +24,33 @@ public class DebbugerManager : MonoBehaviour
         //!for testing with health and attack communication
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TestPlayer1UseMonster1Attack();
+            //TestPlayer1UseMonster1Attack();
         }
 
         //!for testing with buff system
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             
         }
+
         if (Input.GetKeyDown(KeyCode.N))
         {
-            Spell1.RequestEndCardEffect();
+            //Spell1.RequestEndCardEffect();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            TurnManager.Instance.RequestEndOfPhase(PlayerAuthority.PLAYER_1);
+            Debug.Log(GameManager.Instance);
+            GameManager.Instance.RegisterPlayer(Player1);
+            //TurnManager.Instance.RequestEndOfPhase(PlayerAuthority.PLAYER_1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            TurnManager.Instance.RequestEndOfPhase(PlayerAuthority.PLAYER_2);
+            GameManager.Instance.RegisterPlayer(Player2);
+            //TurnManager.Instance.RequestEndOfPhase(PlayerAuthority.PLAYER_2);
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            TestHealingEffect();
+            //TestHealingEffect();
         }
     }
     void TestHealingEffect()
