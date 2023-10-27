@@ -14,9 +14,9 @@ public class MonsterNormalAttack : MonsterSkill
         SameTypeEnergyCost = 1;
         OtherTypeEnergyCost = 1;
         SkillDescription = "Attack";
-        
+
         NeedTarget = true;
-        
+
         #endregion
     }
     public override void OnUse(MonsterCard target, MonsterCard user, PlayerManager player)
