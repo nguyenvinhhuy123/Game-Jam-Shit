@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName = "Game-Jam-Shit/MonsterSkill")]
 public abstract class MonsterSkill : ScriptableObject
 {
     public string SkillName;
@@ -23,7 +22,7 @@ public abstract class MonsterSkill : ScriptableObject
     }
     public virtual void OnUse(MonsterCard user, PlayerManager player)
     {
-        
+
     }
     //TODO: Add player param
     //*Player param to adjust player energy according to cost*/
