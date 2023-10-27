@@ -7,7 +7,7 @@ public class PlayerEnergyDeck : MonoBehaviour
     public int MaxCardInDeck = 10; 
     [SerializeField] private List<Energy> m_energyDeck;
     
-    public void LoadFromCollection(List<Energy> deckBuilded)
+    public void LoadFromCollection(Energy[] deckBuilded)
     {
         foreach (var energy in deckBuilded)
         {
@@ -30,6 +30,7 @@ public class PlayerEnergyDeck : MonoBehaviour
         Energy EnergyToDraw;
         EnergyToDraw = m_energyDeck[Random.Range(0, m_energyDeck.Count)];
         m_energyDeck.Remove(EnergyToDraw);
+        Debug.Log(EnergyToDraw);
         return EnergyToDraw;
     }
 }
