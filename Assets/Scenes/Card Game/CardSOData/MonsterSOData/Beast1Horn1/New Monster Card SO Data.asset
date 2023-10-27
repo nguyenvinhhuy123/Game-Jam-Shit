@@ -17,7 +17,7 @@ MonoBehaviour:
   BackSprite: {fileID: 0}
   Health: 0
   Type: 0
-  Class: 0
+  Class: 3
   NormalAttackDamage: 0
   SkillDamage: 0
   SkeletonAsset: {fileID: 0}
