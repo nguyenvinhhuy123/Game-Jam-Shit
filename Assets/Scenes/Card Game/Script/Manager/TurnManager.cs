@@ -26,7 +26,7 @@ public class TurnManager : PersistenceSingleton<TurnManager>
     private PlayerAuthority m_authority;
     public PlayerAuthority Authority {get {return m_authority;}}
     private PlayerAuthority m_firstToMove;
-    public PlayerAuthority FirstToMove {get {return m_authority;}}
+    public PlayerAuthority FirstToMove {get {return m_firstToMove;}}
     private Phase m_currentPhase;
     public Phase CurrentPhase {get {return m_currentPhase;}}
     

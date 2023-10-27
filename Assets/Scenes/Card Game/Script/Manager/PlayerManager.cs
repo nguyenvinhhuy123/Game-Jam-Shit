@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private int m_maxSpellCardInHand;
     public int MaxSpellCardInHand {get {return m_maxSpellCardInHand;}}
     private List<Energy> m_energyHand = new List<Energy>();
+    public List<Energy> EnergyHand {get {return m_energyHand;}
     [SerializeField] private int m_maxEnergyCardInHand;
     public int MaxEnergyCardInHand {get {return m_maxEnergyCardInHand;}}
     private PlayerSpellDeck m_spellDeck;
