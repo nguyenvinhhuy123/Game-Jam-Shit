@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: 
   MainTypeEnergy: 0
-  SameTypeEnergyCost: 0
-  OtherTypeEnergyCost: 0
+  SameTypeEnergyCost: 2
+  OtherTypeEnergyCost: 2
   SkillDescription: Deal 1 Damage, The next Normal Attack will deal an additional
     of 3 damage
   NeedTarget: 0

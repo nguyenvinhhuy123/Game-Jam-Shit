@@ -12,7 +12,6 @@ public class Beast1Horn1_Skill : MonsterSkill
     private NABuffHandler m_NABUffHandler;
     public int m_NABuffAmount = 3;
     public int m_duration = 1;
-    //check for end on external call (when the monster use Normal Attack again after getting the buff)
     private LifeTimeType m_lifeTimeType = LifeTimeType.END_ON_TIME;
     public Beast1Horn1_Skill()
     {
