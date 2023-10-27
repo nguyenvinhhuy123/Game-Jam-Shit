@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "GameFlowObject/Energy")]
-public class Energy : ScriptableObject
+public class Energy : MonoBehaviour
 {
     [SerializeField] private MonsterType m_energyType;
     public MonsterType Type {get {return m_energyType;}}
