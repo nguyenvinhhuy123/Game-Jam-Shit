@@ -29,6 +29,11 @@ public class PlayerManager : MonoBehaviour
     private UnityAction<PlayerAuthority> OnPhaseChangeAction;
     #endregion
 
+    #region Monster Spawn Slot
+    //*empty gameobject transform to use as a point to spawn monster card into game */
+    Transform[] SpawnPosition = new Transform[3];
+
+    #endregion
     //TODO: 
     void OnEnable()
     {
@@ -48,6 +53,9 @@ public class PlayerManager : MonoBehaviour
         m_energyDeck = GetComponentInChildren<PlayerEnergyDeck>();
         m_monsterDeck = GetComponentInChildren<PlayerMonsterDeck>();
 
+        SpawnPosition[0]= this.gameObject.transform.Find("MonsterSlot1");
+        SpawnPosition[1] = this.gameObject.transform.Find("MonsterSlot2");
+        SpawnPosition[2]= this.gameObject.transform.Find("MonsterSlot3");
     }
     // Start is called before the first frame update
     void Start()
@@ -69,7 +77,7 @@ public class PlayerManager : MonoBehaviour
         {
             m_monsterCardsHand.Add(m_monsterDeck.LoadMonster(iterator));
             //TODO: Adject spawn card position
-            GameObject.Instantiate(m_monsterCardsHand[iterator], this.gameObject.transform);
+            GameObject.Instantiate(m_monsterCardsHand[iterator], this.SpawnPosition[iterator]);
         }
         m_activeMonster = m_monsterCardsHand[0];
 
