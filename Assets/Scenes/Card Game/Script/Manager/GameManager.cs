@@ -2,19 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : PersistenceSingleton<GameManager>
 {
     public PlayerManager Player1;
     public PlayerManager Player2;
-
+    private UnityAction<PlayerAuthority> OnEndOfTurnAction;
     protected override void Awake()
     {
         base.Awake();
     }
+    void OnEnable()
+    {
+        OnEndOfTurnAction += OnEndOfTurn;
+    }
+    void OnDisable()
+    {
+        OnEndOfTurnAction -= OnEndOfTurn;
+    }
     void Start()
     {
         StartCoroutine(nameof(Setup));
+        TurnManager.Instance.AddEndOfTurnListener(OnEndOfTurnAction);
+    }
+    void OnEndOfTurn(PlayerAuthority AuthorityAfterTurnChange)
+    {
+        if (AuthorityAfterTurnChange == Player1.ThisAuthority)
+        {
+            Player1.DrawCard();
+            Player1.DrawEnergy();
+            Player1.EndThisPhase();
+        }
+        if (AuthorityAfterTurnChange == Player2.ThisAuthority)
+        {
+            Player2.DrawCard();
+            Player2.DrawEnergy();
+            Player2.EndThisPhase();
+        }
     }
     IEnumerator WaitForRegister()
     {

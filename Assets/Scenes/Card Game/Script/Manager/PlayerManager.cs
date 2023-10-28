@@ -70,6 +70,16 @@ public class PlayerManager : MonoBehaviour
     {
         
     }
+    
+    public void EndThisPhase()
+    {
+        if (TurnManager.Instance.CurrentAuthority != m_thisAuthority)
+        {
+            Debug.Log("Cant end phase, not our turn");
+            return;
+        }
+        TurnManager.Instance.RequestEndOfPhase(m_thisAuthority);
+    }
     public void LoadPlayerMonster()
     {
         Debug.Log("Load monster " + this.name);
