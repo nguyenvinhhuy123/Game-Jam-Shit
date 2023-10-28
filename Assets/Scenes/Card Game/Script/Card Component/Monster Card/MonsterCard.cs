@@ -145,7 +145,7 @@ public class MonsterCard : Card
     #region Method
     public void UseNormalAttack(MonsterCard target, PlayerManager player)
     {
-        if (TurnManager.Instance.Authority != player.ThisAuthority)
+        if (TurnManager.Instance.CurrentAuthority != player.ThisAuthority)
         {
             Debug.Log("Can not use attack, not our turn yet");
             return;
@@ -165,7 +165,7 @@ public class MonsterCard : Card
     }
     public void UseSkill(MonsterCard target, PlayerManager player)
     {
-        if (TurnManager.Instance.Authority != player.ThisAuthority)
+        if (TurnManager.Instance.CurrentAuthority != player.ThisAuthority)
         {
             Debug.Log("Can not use spell, not our turn yet");
             return;
