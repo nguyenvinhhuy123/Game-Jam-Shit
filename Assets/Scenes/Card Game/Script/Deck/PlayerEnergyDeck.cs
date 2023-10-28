@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerEnergyDeck : MonoBehaviour
 {
-    public int MaxCardInDeck = 10; 
+    public int MaxCardInDeck = 10;
     [SerializeField] private List<Energy> m_energyDeck;
-    
+
     public void LoadFromCollection(Energy[] deckBuilded)
     {
         foreach (var energy in deckBuilded)
@@ -18,7 +18,7 @@ public class PlayerEnergyDeck : MonoBehaviour
             }
             m_energyDeck.Add(energy);
         }
-        
+
     }
     public Energy DrawCard()
     {
@@ -32,5 +32,32 @@ public class PlayerEnergyDeck : MonoBehaviour
         m_energyDeck.Remove(EnergyToDraw);
         Debug.Log(EnergyToDraw);
         return EnergyToDraw;
+    }
+    public Energy DrawSpecificTraitEnergy(MonsterTrait trait)
+    {
+        if (m_energyDeck.Count <= 0)
+        {
+            Debug.Log("No more card in deck");
+            return null;
+        }
+        Energy energyToDraw = null;
+        foreach (var energy in m_energyDeck)
+        {
+            if (energy.Trait == trait)
+            {
+                energyToDraw = energy;
+                break;
+            }
+        }
+        if (energyToDraw != null)
+        {
+            m_energyDeck.Remove(energyToDraw);
+        }
+        else
+        {
+            Debug.Log("No more Energy Card of the trait");
+            return null;
+        }
+        return energyToDraw;
     }
 }

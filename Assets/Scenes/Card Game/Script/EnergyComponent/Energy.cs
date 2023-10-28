@@ -31,19 +31,5 @@ public class Energy : MonoBehaviour
     {
         m_used = false;
     }
-    public DrawSpecificTraitEnergy(MonsterTrait trait)
-    {
-        if (m_energyDeck.Count <= 0)
-        {
-            Debug.Log("No more card in deck");
-            return null;
-        }
-        Energy energyToDraw;
-        if (m_energyDeck.Contains(trait))
-        {
-            energyToDraw = m_energyDeck[m_energyDeck.IndexOf(trait)];
-            m_energyDeck.Remove(energyToDraw);
-        }
-        return energyToDraw;
-    }
+
 }
