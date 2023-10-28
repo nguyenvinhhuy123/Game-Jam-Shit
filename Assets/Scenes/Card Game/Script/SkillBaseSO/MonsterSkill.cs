@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class MonsterSkill : ScriptableObject
 {
     public string SkillName;
-    public MonsterType MainTypeEnergy;
+    public MonsterTrait MainTypeEnergy;
     public int SameTypeEnergyCost;
     public int OtherTypeEnergyCost;
     public string SkillDescription;
