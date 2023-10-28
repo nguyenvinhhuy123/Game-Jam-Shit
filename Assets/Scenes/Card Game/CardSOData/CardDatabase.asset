@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8dcf45534b72a41b9b6bb906cc38cd, type: 3}
   m_Name: CardDatabase
   m_EditorClassIdentifier: 
+  MaxNumberEnergyType: 6
   MonsterCardDatabase:
   - {fileID: 7401476656180674300, guid: 7794a6451ec49554abcff04963fd51d9, type: 3}
   - {fileID: 1456223198881165936, guid: fe8b0b38ff02c364f8ad9143c994a94c, type: 3}
   SpellCardDatabase:
   - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  EnergyDatabase:
+  - {fileID: 6524173260690329333, guid: bf17fd2710b2ff546a8f8d6f45a68ac8, type: 3}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnergyUI : MonoBehaviour
 {
+    //Use script as Energy UI handler if needed
     // Start is called before the first frame update
     void Start()
     {
