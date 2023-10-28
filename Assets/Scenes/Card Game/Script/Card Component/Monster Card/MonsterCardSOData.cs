@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Spine.Unity;
 using UnityEngine;
 
-public enum MonsterType : byte
+public enum MonsterTrait : byte
 {
     Beast,
     Aquatic,
@@ -17,14 +17,14 @@ public enum MonsterClass
 {
     Mouth,
     Tail,
-    Back, 
+    Back,
     Horn
 }
 [CreateAssetMenu(menuName = "Game-Jam-Shit/MonsterSO")]
 public class MonsterCardSOData : CardSOData
 {
     public int Health;
-    public MonsterType Type;
+    public MonsterTrait Type;
     public MonsterClass Class;
     public int NormalAttackDamage;
     public int SkillDamage;

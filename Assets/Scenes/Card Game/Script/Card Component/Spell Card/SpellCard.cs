@@ -9,17 +9,17 @@ public class SpellCard : Card
 
     #region Attribute
     [SerializeField] private bool m_isInstance;
-    public bool IsInstance {get {return m_isInstance;}}
-    [SerializeField] private MonsterType m_mainType;
-    public MonsterType MainType {get {return MainType;}}
+    public bool IsInstance { get { return m_isInstance; } }
+    [SerializeField] private MonsterTrait m_mainType;
+    public MonsterTrait MainType { get { return MainType; } }
     [SerializeField] private MonsterClass m_mainClass;
-    public MonsterClass MainClass {get {return m_mainClass;}}
+    public MonsterClass MainClass { get { return m_mainClass; } }
     [SerializeField] private int m_mainTypeEnergyCost;
-    public int MainTypeEnergyCost {get {return m_mainTypeEnergyCost;} set {m_mainTypeEnergyCost = value;}}
+    public int MainTypeEnergyCost { get { return m_mainTypeEnergyCost; } set { m_mainTypeEnergyCost = value; } }
     [SerializeField] private int m_otherTypeEnergyCost;
-    public int OtherTypeEnergyCost {get {return m_otherTypeEnergyCost;} set {m_otherTypeEnergyCost = value;}}
+    public int OtherTypeEnergyCost { get { return m_otherTypeEnergyCost; } set { m_otherTypeEnergyCost = value; } }
     [SerializeField] private bool m_needTarget;
-    public bool NeedTarget {get {return m_needTarget;}}
+    public bool NeedTarget { get { return m_needTarget; } }
     #endregion
     public void UseSelf(MonsterCard target, PlayerManager player)
     {
@@ -59,13 +59,13 @@ public class SpellCard : Card
         m_data.MainClass = m_mainClass;
         m_data.MainType = m_mainType;
         m_data.MainTypeEnergyCost = m_mainTypeEnergyCost;
-        m_data.OtherTypeEnergyCost =  m_otherTypeEnergyCost;
+        m_data.OtherTypeEnergyCost = m_otherTypeEnergyCost;
         m_data.IsInstance = m_isInstance;
         m_data.NeedTarget = m_needTarget;
 
         m_data.FrontSprite = FrontSprite;
         m_data.BackSprite = BackSprite;
-        m_data.Name = CardName; 
+        m_data.Name = CardName;
         m_data.SetID(CardID);
     }
     void InitData()
@@ -80,6 +80,6 @@ public class SpellCard : Card
         CardID = m_data.CardID;
         FrontSprite = m_data.FrontSprite;
         BackSprite = m_data.BackSprite;
-        CardName = m_data.Name; 
+        CardName = m_data.Name;
     }
 }

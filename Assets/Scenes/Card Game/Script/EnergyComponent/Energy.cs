@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Energy : MonoBehaviour
 {
-    [SerializeField] private MonsterType m_energyType;
-    public MonsterType Type {get {return m_energyType;}}
+    [SerializeField] private MonsterTrait m_energyType;
+    public MonsterTrait Type { get { return m_energyType; } }
     [SerializeField] private bool m_used;
-    public bool Used {get {return m_used;}}
+    public bool Used { get { return m_used; } }
     public void OnHover()
     {
 
     }
     public void OnSelect()
     {
-        
+
     }
     public void UseThis()
     {
