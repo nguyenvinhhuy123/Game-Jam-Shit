@@ -16,7 +16,14 @@ MonoBehaviour:
   MonsterCardDatabase:
   - {fileID: 7401476656180674300, guid: 7794a6451ec49554abcff04963fd51d9, type: 3}
   - {fileID: 1456223198881165936, guid: fe8b0b38ff02c364f8ad9143c994a94c, type: 3}
+  - {fileID: 0}
   SpellCardDatabase:
   - {fileID: 676479236707910026, guid: cd14680ccb25e784bb04f2327b679e6a, type: 3}
+  - {fileID: 0}
   EnergyDatabase:
   - {fileID: 6524173260690329333, guid: bf17fd2710b2ff546a8f8d6f45a68ac8, type: 3}
+  - {fileID: 2101808337108023000, guid: 1baeac9e3f2dd52408506656804b93a4, type: 3}
+  - {fileID: 5434169195923528235, guid: bd495297f0924ea4491016ce6af5286e, type: 3}
+  - {fileID: 8171560762819811425, guid: 1118ac21f2e0a27409bd12d837b2c4a4, type: 3}
+  - {fileID: 1022412783994004875, guid: fecb3072408fa144898f9bb6501bf3b5, type: 3}
+  - {fileID: 8125234061541228002, guid: 89f078e97374807438636dbd9d2d6aa7, type: 3}

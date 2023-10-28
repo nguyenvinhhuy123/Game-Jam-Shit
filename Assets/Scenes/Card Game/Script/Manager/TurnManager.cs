@@ -23,10 +23,10 @@ public class TurnManager : PersistenceSingleton<TurnManager>
     private UnityEvent<Phase> OnEndOfPhase;
     private int m_turnCount = 0;
     public int TurnCount {get {return m_turnCount;}}
-    private PlayerAuthority m_authority;
-    public PlayerAuthority Authority {get {return m_authority;}}
+    private PlayerAuthority m_currentAuthority;
+    public PlayerAuthority CurrentAuthority {get {return m_currentAuthority;}}
     private PlayerAuthority m_firstToMove;
-    public PlayerAuthority FirstToMove {get {return m_authority;}}
+    public PlayerAuthority FirstToMove {get {return m_firstToMove;}}
     private Phase m_currentPhase;
     public Phase CurrentPhase {get {return m_currentPhase;}}
     
@@ -42,7 +42,7 @@ public class TurnManager : PersistenceSingleton<TurnManager>
     }
     public void RequestEndOfPhase(PlayerAuthority requester)
     {
-        if (requester != m_authority)
+        if (requester != m_currentAuthority)
         {
             Debug.Log("Not " + requester + " turn, cannot request end of phase");
             return;
@@ -57,7 +57,7 @@ public class TurnManager : PersistenceSingleton<TurnManager>
     }
     public void RequestEndOfTurn(PlayerAuthority requester)
     {
-        if (requester != m_authority)
+        if (requester != m_currentAuthority)
         {
             Debug.Log("Not " + requester + " turn, cannot request end of turn");
             return;
@@ -70,14 +70,14 @@ public class TurnManager : PersistenceSingleton<TurnManager>
         m_turnCount++;
         if (requester == PlayerAuthority.PLAYER_1)
         {
-            m_authority = PlayerAuthority.PLAYER_2;
+            m_currentAuthority = PlayerAuthority.PLAYER_2;
         }
         else
         {
-            m_authority = PlayerAuthority.PLAYER_1;
+            m_currentAuthority = PlayerAuthority.PLAYER_1;
         }
         m_currentPhase = Phase.PREPARATION_PHASE;
-        OnEndOfTurn.Invoke(m_authority);
+        OnEndOfTurn.Invoke(m_currentAuthority);
     }
     /// <summary>
     /// Request register first player to move 
@@ -90,7 +90,7 @@ public class TurnManager : PersistenceSingleton<TurnManager>
     {
         m_firstToMove = diceRollWinner;
         m_turnCount ++;
-        m_authority = m_firstToMove;
+        m_currentAuthority = m_firstToMove;
         m_currentPhase = Phase.PREPARATION_PHASE;
     }
     /// <summary>

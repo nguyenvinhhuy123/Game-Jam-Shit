@@ -23,7 +23,7 @@ public class SpellCard : Card
     #endregion
     public void UseSelf(MonsterCard target, PlayerManager player)
     {
-        if ((TurnManager.Instance.Authority != player.ThisAuthority) && !IsInstance)
+        if ((TurnManager.Instance.CurrentAuthority != player.ThisAuthority) && !IsInstance)
         {
             Debug.Log("Can not use spell, not our turn yet");
             return;

@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456223198881165950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34184903, y: -0.08892828, z: -0.036174458}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -55,6 +55,9 @@ MonoBehaviour:
   m_shieldDuration: 0
   m_unitInactive: 0
   OnKillSelfEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHit:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1456223198881165939
@@ -160,14 +163,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cardName: 
+  m_cardID: 0
   m_frontSprite: {fileID: 0}
   m_backSprite: {fileID: 0}
   m_data: {fileID: 11400000, guid: cd7878a1bf3b67a4aa7bc264d173e2fb, type: 2}
   m_animationAsset: {fileID: 11400000, guid: a4c9aa158a024427288679692b1e4538, type: 2}
   m_health: 15
   m_type: 0
+  m_class: 0
   m_normalAttack: {fileID: 11400000, guid: 8b28230a072ec9d45a011347f5ec4302, type: 2}
-  m_skill: {fileID: 0}
+  m_skill: {fileID: 11400000, guid: 38e5a1596874df641979fb70d93c7ccd, type: 2}
   m_normalAttackDamage: 2
   m_skillDamage: 4
 --- !u!1001 &1456223199579732597
@@ -187,11 +192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5757632447747805066, guid: 4406db98bd9b8244bab4cf8ce5571957, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5757632447747805066, guid: 4406db98bd9b8244bab4cf8ce5571957, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5757632447747805066, guid: 4406db98bd9b8244bab4cf8ce5571957, type: 3}
       propertyPath: m_LocalPosition.z
