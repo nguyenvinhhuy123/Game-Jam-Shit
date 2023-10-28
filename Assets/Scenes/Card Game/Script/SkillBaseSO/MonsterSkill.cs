@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName = "Game-Jam-Shit/MonsterSkill")]
 public abstract class MonsterSkill : ScriptableObject
 {
     public string SkillName;

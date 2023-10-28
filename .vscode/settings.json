@@ -53,5 +53,5 @@
     },
     "dotnet.preferCSharpExtension": true,
     "FSharp.suggestGitignore": false,
-    "dotnet.defaultSolution": "Game-Jam-Shit.sln"
+    "dotnet.defaultSolution": "Game-Jam-Forked.sln"
 }
